@@ -1,6 +1,6 @@
 {
   "name": "@lonord/pi-dashboard-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React components for pi dashboard modules",
   "main": "lib/",
   "types": "lib/",
@@ -26,19 +26,21 @@
   "peerDependencies": {
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "styled-components": "^3.1.6"
+    "styled-components": "^3.1.6",
+    "@lonord/pi-status-rpc-client": "^1.0.9"
   },
   "devDependencies": {
+    "@lonord/pi-status-rpc-client": "^1.0.9",
     "@types/node": "^9.4.6",
     "@types/react": "^16.0.38",
     "@types/react-dom": "^16.0.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "rimraf": "^2.6.2",
+    "styled-components": "^3.1.6",
     "tslint": "^5.9.1",
     "tslint-react": "^3.5.1",
     "typescript": "^2.7.2",
-    "typescript-styled-plugin": "^0.6.0",
-    "styled-components": "^3.1.6"
+    "typescript-styled-plugin": "^0.6.0"
   }
 }
