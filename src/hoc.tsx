@@ -66,6 +66,9 @@ export function withSSEClient<P extends RPCCompProps, K extends keyof P>(Comp: R
 				this.sseClient.close()
 				this.sseClient = null
 			}
+			this.setState({
+				sseData: null
+			})
 		}
 
 		componentDidUpdate(prevProps: P) {
