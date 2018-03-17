@@ -6,3 +6,11 @@ export const SubTitle = styled.div`
 	color: #999;
 	margin-bottom: 6px;
 `
+
+export const LoadingText = styled.div`
+	height: 40px;
+	line-height: 40px;
+	font-size: 12px;
+	color: #ccc;
+	text-align: center;
+`

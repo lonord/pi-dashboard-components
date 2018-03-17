@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled, { StyledComponentClass } from 'styled-components'
-import { SubTitle } from './components/common'
+import { LoadingText, SubTitle } from './components/common'
+import { IndicatorButton, IndicatorButtonProps } from './components/indicator-button'
 import { ProgressBar, ProgressBarProps } from './components/progress-bar'
 import { SelectableArea, SelectableAreaProps } from './components/selectable-area'
 import { Title, TitleProps } from './components/title'
@@ -13,6 +14,8 @@ export {
 	SelectableAreaProps,
 
 	SubTitle,
+	LoadingText,
+
 	Title,
 	TitleProps,
 
@@ -23,5 +26,8 @@ export {
 	withHTTPClient,
 
 	ProgressBar,
-	ProgressBarProps
+	ProgressBarProps,
+
+	IndicatorButton,
+	IndicatorButtonProps
 }
