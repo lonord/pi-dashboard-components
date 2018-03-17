@@ -11,6 +11,7 @@ export interface IndicatorButtonProps {
 }
 const RawIndicatorButton = styled(IconButton as any as React.ComponentType<IndicatorButtonProps & IconButtonProps>) `
 	color: ${({ showColor }) => showColor};
+	background: transparent;
 `
 export const IndicatorButton: React.SFC<IndicatorButtonProps & React.HTMLAttributes<HTMLButtonElement>> = (props) => (
 	<RawIndicatorButton {...props} icon="circle" />
