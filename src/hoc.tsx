@@ -110,3 +110,75 @@ export function withSSEClient<P extends RPCCompProps, K extends keyof P>(Comp: R
 	}
 	return SSEClientComp as React.ComponentType<P>
 }
+
+export function withHTTPClient<P extends RPCCompProps, K extends keyof P>(Comp: React.ComponentType<P>,
+	servicePath: string, paramsMapper: ParamsMapper<P>, interval: number, dataPropName: K, errorPropName?: K) {
+	interface HTTPClientCompState {
+		httpData: any
+		error: any
+	}
+	class HTTPClientComp extends React.Component<P, HTTPClientCompState> {
+
+		rpcService: RPCClient = null
+		timer: any = null
+
+		state: HTTPClientCompState = {
+			httpData: null,
+			error: null
+		}
+
+		onTick = () => {
+			if (this.rpcService) {
+				this.rpcService.httpGet(servicePath, paramsMapper(this.props)).then((result) => {
+					this.setState({
+						httpData: result,
+						error: null
+					})
+				}).catch((e) => {
+					this.setState({
+						httpData: null,
+						error: e
+					})
+				})
+			}
+		}
+
+		componentDidUpdate(prevProps: P) {
+			if (prevProps.rpcBaseUrl !== this.props.rpcBaseUrl) {
+				this.timer && clearInterval(this.timer)
+				this.timer = null
+				if (this.props.rpcBaseUrl) {
+					this.rpcService = createRPCClient(this.props.rpcBaseUrl)
+					this.onTick()
+					this.timer = setInterval(this.onTick, interval)
+				}
+			}
+		}
+
+		componentDidMount() {
+			const { rpcBaseUrl } = this.props
+			if (rpcBaseUrl) {
+				this.rpcService = createRPCClient(rpcBaseUrl)
+				this.onTick()
+				this.timer = setInterval(this.onTick, interval)
+			}
+		}
+
+		componentWillUnmount() {
+			this.timer && clearInterval(this.timer)
+			this.timer = null
+			this.rpcService = null
+		}
+
+		render() {
+			const httpDataObj = {
+				[dataPropName]: this.state.httpData,
+				[errorPropName]: this.state.error
+			}
+			return (
+				<Comp {...this.props} {...httpDataObj} />
+			)
+		}
+	}
+	return HTTPClientComp as React.ComponentType<P>
+}

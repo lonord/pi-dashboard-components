@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled, { StyledComponentClass } from 'styled-components'
-import { ParamsMapper, RPCCompProps, withCustomRPCBaseUrl, withSSEClient } from './hoc'
+import { ParamsMapper, RPCCompProps, withCustomRPCBaseUrl, withHTTPClient, withSSEClient } from './hoc'
 import { FullSizeWrap, SelectableArea, SelectableAreaProps } from './layouts'
 import { SubTitle, Title, TitleProps } from './styled'
 
@@ -16,5 +16,6 @@ export {
 	ParamsMapper,
 	RPCCompProps,
 	withCustomRPCBaseUrl,
-	withSSEClient
+	withSSEClient,
+	withHTTPClient
 }
