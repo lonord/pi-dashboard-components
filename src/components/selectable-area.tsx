@@ -10,9 +10,3 @@ export const SelectableArea = styled(RawSelectableArea as any as React.Component
 	border: 1px solid ${({ isSelected }) => isSelected ? '#2196F3' : 'transparent'};
 	background: ${({ isSelected }) => isSelected ? '#E3F2FD' : 'transparent'};
 `
-
-export const FullSizeWrap = styled.div`
-	position: absolute;
-	width: 100%;
-	height: 100%;
-`

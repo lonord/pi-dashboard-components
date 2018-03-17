@@ -1,8 +1,11 @@
 import * as React from 'react'
 import styled, { StyledComponentClass } from 'styled-components'
+import { SubTitle } from './components/common'
+import { ProgressBar, ProgressBarProps } from './components/progress-bar'
+import { SelectableArea, SelectableAreaProps } from './components/selectable-area'
+import { Title, TitleProps } from './components/title'
 import { ParamsMapper, RPCCompProps, withCustomRPCBaseUrl, withHTTPClient, withSSEClient } from './hoc'
-import { FullSizeWrap, SelectableArea, SelectableAreaProps } from './layouts'
-import { SubTitle, Title, TitleProps } from './styled'
+import { FullSizeWrap } from './layout/common'
 
 export {
 	FullSizeWrap,
@@ -17,5 +20,8 @@ export {
 	RPCCompProps,
 	withCustomRPCBaseUrl,
 	withSSEClient,
-	withHTTPClient
+	withHTTPClient,
+
+	ProgressBar,
+	ProgressBarProps
 }

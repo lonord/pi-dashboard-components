@@ -16,9 +16,3 @@ export const Title = styled(RawTitle as any as React.ComponentType<TitleProps>) 
 	padding-left: 6px;
 	border-left: ${({ borderWidth }) => (borderWidth || 4) + 'px'} solid ${({ borderColor }) => borderColor || '#333'};
 `
-
-export const SubTitle = styled.div`
-	font-size: 14px;
-	color: #999;
-	margin-bottom: 6px;
-`
