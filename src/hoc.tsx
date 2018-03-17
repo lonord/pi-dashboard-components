@@ -172,8 +172,10 @@ export function withHTTPClient<P extends RPCCompProps, K extends keyof P>(Comp: 
 
 		render() {
 			const httpDataObj = {
-				[dataPropName]: this.state.httpData,
-				[errorPropName]: this.state.error
+				[dataPropName]: this.state.httpData
+			}
+			if (errorPropName) {
+				httpDataObj[errorPropName] = this.state.error
 			}
 			return (
 				<Comp {...this.props} {...httpDataObj} />
