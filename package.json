@@ -1,6 +1,6 @@
 {
   "name": "@lonord/pi-dashboard-components",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "React components for pi dashboard modules",
   "main": "lib/",
   "types": "lib/",
@@ -27,11 +27,9 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "styled-components": "^3.1.6",
-    "@lonord/pi-status-rpc-client": "^1.0.9",
     "@lonord/react-electron-components": "^1.0.12"
   },
   "devDependencies": {
-    "@lonord/pi-status-rpc-client": "^1.0.9",
     "@types/node": "^9.4.6",
     "@types/react": "^16.0.38",
     "@types/react-dom": "^16.0.4",
@@ -44,5 +42,8 @@
     "typescript": "^2.7.2",
     "typescript-styled-plugin": "^0.6.0",
     "@lonord/react-electron-components": "^1.0.12"
+  },
+  "dependencies": {
+    "@lonord/pi-status-rpc-client": "^1.0.9"
   }
 }
