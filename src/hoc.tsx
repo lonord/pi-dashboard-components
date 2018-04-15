@@ -3,6 +3,7 @@ import * as React from 'react'
 
 export interface RPCCompProps {
 	rpcBaseUrl: string
+	getRPCClient?(): RPCClient
 }
 
 export function withCustomRPCBaseUrl<P extends RPCCompProps>(Comp: React.ComponentType<P>, customRPCBaseUrl: string) {
@@ -101,7 +102,8 @@ export function withSSEClient<P extends RPCCompProps, K extends keyof P>(Comp: R
 
 		render() {
 			const sseDataObj = {
-				[dataPropName]: this.state.sseData
+				[dataPropName]: this.state.sseData,
+				getRPCClient: () => this.rpcService
 			}
 			return (
 				<Comp {...this.props} {...sseDataObj} />
@@ -172,7 +174,8 @@ export function withHTTPClient<P extends RPCCompProps, K extends keyof P>(Comp: 
 
 		render() {
 			const httpDataObj = {
-				[dataPropName]: this.state.httpData
+				[dataPropName]: this.state.httpData,
+				getRPCClient: () => this.rpcService
 			}
 			if (errorPropName) {
 				httpDataObj[errorPropName] = this.state.error

@@ -1,6 +1,6 @@
 {
   "name": "@lonord/pi-dashboard-components",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "React components for pi dashboard modules",
   "main": "lib/",
   "types": "lib/",
@@ -44,6 +44,6 @@
     "@lonord/react-electron-components": "^1.0.12"
   },
   "dependencies": {
-    "@lonord/pi-status-rpc-client": "^1.0.9"
+    "@lonord/pi-status-rpc-client": "^1.1.0"
   }
 }
