@@ -114,7 +114,7 @@ export function withSSEClient<P extends RPCCompProps, K extends keyof P>(Comp: R
 }
 
 export interface HTTPRPCCompProps extends RPCCompProps {
-	fetchNow?()
+	fetchNow?(fn?: () => void)
 }
 
 export function withHTTPClient<P extends HTTPRPCCompProps, K extends keyof P>(Comp: React.ComponentType<P>,
@@ -136,7 +136,7 @@ export function withHTTPClient<P extends HTTPRPCCompProps, K extends keyof P>(Co
 			error: null
 		}
 
-		onTick = () => {
+		onTick = (fn?: () => void) => {
 			if (this.rpcService) {
 				this.fetching = true
 				this.rpcService.httpGet(servicePath, paramsMapper(this.props)).then((result) => {
@@ -153,6 +153,7 @@ export function withHTTPClient<P extends HTTPRPCCompProps, K extends keyof P>(Co
 						error: e
 					})
 				}).then(() => {
+					fn && fn()
 					this.responseValid = true
 					if (this.fetchRunning) {
 						this.timer = setTimeout(this.onTick, interval)
@@ -161,12 +162,12 @@ export function withHTTPClient<P extends HTTPRPCCompProps, K extends keyof P>(Co
 			}
 		}
 
-		trig = () => {
+		trig = (fn?: () => void) => {
 			if (this.fetching) {
 				this.responseValid = false
 			}
 			this.timer && clearTimeout(this.timer)
-			this.onTick()
+			this.onTick(fn)
 		}
 
 		componentDidUpdate(prevProps: P) {
@@ -203,7 +204,7 @@ export function withHTTPClient<P extends HTTPRPCCompProps, K extends keyof P>(Co
 			const httpDataObj = {
 				[dataPropName]: this.state.httpData,
 				getRPCClient: () => this.rpcService,
-				fetchNow: () => this.trig()
+				fetchNow: (fn) => this.trig(fn)
 			}
 			if (errorPropName) {
 				httpDataObj[errorPropName] = this.state.error
