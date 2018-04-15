@@ -173,8 +173,11 @@ export function withHTTPClient<P extends HTTPRPCCompProps, K extends keyof P>(Co
 			if (prevProps.rpcBaseUrl !== this.props.rpcBaseUrl) {
 				this.timer && clearTimeout(this.timer)
 				this.timer = null
+				this.fetchRunning = false
+				this.rpcService = null
 				if (this.props.rpcBaseUrl) {
 					this.rpcService = createRPCClient(this.props.rpcBaseUrl)
+					this.fetchRunning = true
 					this.onTick()
 				}
 			}
